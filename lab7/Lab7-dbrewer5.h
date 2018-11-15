@@ -11,10 +11,10 @@
 #include <vector>
 
 // Define all the sorting algorithms to be implemented
-std::vector<double> bubbleSort(std::vector<double> v);
-std::vector<double> insertionSort(std::vector<double> v);
-std::vector<double> selectionSort(std::vector<double> v);
-std::vector<double> mergeSort(std::vector<double> v);
-std::vector<double> quickSort(std::vector<double> v);
+std::vector<int> bubbleSort(std::vector<int> v);
+std::vector<int> insertionSort(std::vector<int> v);
+std::vector<int> selectionSort(std::vector<int> v);
+std::vector<int> mergeSort(std::vector<int> v);
+std::vector<int> quickSort(std::vector<int> v);
 
 #endif
