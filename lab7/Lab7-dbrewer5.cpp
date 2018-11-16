@@ -13,10 +13,6 @@
 
 using namespace std;
 
-vector<int> merge(vector<int> left, vector<int> right);
-int partition(vector<int> &v, int lo, int hi);
-void swap(vector<int> &v, int i, int j);
-
 /* ---Methods--- */
 vector<int> fillRandom(int n, int min, int max, int seed) {
   srand(seed);
