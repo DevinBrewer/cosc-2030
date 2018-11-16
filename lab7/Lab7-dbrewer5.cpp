@@ -14,6 +14,8 @@
 using namespace std;
 
 vector<int> merge(vector<int> left, vector<int> right);
+int partition(vector<int> &v, int lo, int hi);
+void swap(vector<int> &v, int i, int j);
 
 /* ---Methods--- */
 vector<int> fillRandom(int n, int min, int max, int seed) {
@@ -141,8 +143,39 @@ vector<int> merge(vector<int> left, vector<int> right) {
   return result;
 }
 
-vector<int> quickSort(vector<int> v) {
-  return v;
+void quickSort(vector<int> &v, int lo, int hi) {
+  // Lomuto partition scheme
+  // Worst case O(n^2)
+  // Best case O(n log n)
+  if (lo < hi) {
+    int p = partition(v, lo, hi);
+    quickSort(v, lo, p-1);
+    quickSort(v, p+1, hi);
+  }
+}
+
+int partition(vector<int> &v, int lo, int hi) {
+  int left = lo;
+  int right = hi;
+  int piv = v.at(left);
+
+  while (left < right) {
+    while (v.at(left) <= piv) left++;
+    while (v.at(right) > piv) right--;
+
+    if (left < right) {
+      swap(v, left, right);
+    }
+  }
+
+  swap(v, lo, right);
+  return right;
+}
+
+void swap(vector<int> &v, int i, int j) {
+  int t = v.at(i);
+  v.at(i) = v.at(j);
+  v.at(j) = t;
 }
 
 // Return whether a vector is sorted lowest to highest
@@ -167,14 +200,22 @@ int main() {
 
   vector<int> newVector = fillRandom(n, 0, n, seed);
 
+  if (n <= 10) {
+    cout << "Before: ";
+    for (vector<int>::const_iterator i = newVector.begin(); i != newVector.end(); ++i) {
+      cout << *i << ' ';
+    }
+  }
+
   // Sort the vector
   cout << "Sorting... ";
-  newVector = mergeSort(newVector);
+  quickSort(newVector, 0, newVector.size()-1);
   cout << "Done!" << endl;
   cout << "isSorted: " << isSorted(newVector) << endl;
 
   // Print the vector
   if (n <= 10) {
+    cout << "After: ";
     for (vector<int>::const_iterator i = newVector.begin(); i != newVector.end(); ++i) {
       cout << *i << ' ';
     }

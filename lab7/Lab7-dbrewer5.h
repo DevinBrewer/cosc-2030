@@ -15,6 +15,6 @@ std::vector<int> bubbleSort(std::vector<int> v);
 std::vector<int> insertionSort(std::vector<int> v);
 std::vector<int> selectionSort(std::vector<int> v);
 std::vector<int> mergeSort(std::vector<int> v);
-std::vector<int> quickSort(std::vector<int> v);
+void quickSort(std::vector<int> v);
 
 #endif
