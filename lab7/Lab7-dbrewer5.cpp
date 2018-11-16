@@ -26,8 +26,8 @@ vector<int> fillRandom(int n, int min, int max, int seed) {
 }
 
 vector<int> bubbleSort(vector<int> v) { // Wikipedia::Opimimzing bubble sort
-  // Worst case ~ O(n^2) comparisons
-  //              O(n^2) swaps
+  // Worst case ~ O(n^2) comparisons, swaps
+  // BEst case ~ O(n) comparisions, O(1) swaps
   for (int n = v.size(); n > 0; n--) {
     for (int i = 0; i < n-1; i++) {
       if (v.at(i) > v.at(i+1)) {
@@ -42,7 +42,18 @@ vector<int> bubbleSort(vector<int> v) { // Wikipedia::Opimimzing bubble sort
   return v;
 }
 
-vector<int> insertionSort(vector<int> v) {
+vector<int> insertionSort(vector<int> v) { // Wikipedia::Insetion Sort
+  // Worst case ~ O(n^2) comparisions, swaps
+  // Best case ~ O(n) comparisions, O(1) swaps
+  for (int i = 1; i < v.size(); i++) {
+    for (int j = i; (j > 0 && v.at(j-1) > v.at(j)); j--) {
+      // Swap
+      int temp = v.at(j);
+      v.at(j) = v.at(j-1);
+      v.at(j-1) = temp;
+    }
+  }
+
   return v;
 }
 
@@ -71,10 +82,12 @@ int main() {
   vector<int> newVector = fillRandom(n, 0, n, seed);
 
   // Sort the vector
-  newVector = bubbleSort(newVector);
+  cout << "Sorting... ";
+  newVector = insertionSort(newVector);
+  cout << "Done!" << endl;
 
   // Print the vector
-  if (n < 10) {
+  if (n <= 10) {
     for (vector<int>::const_iterator i = newVector.begin(); i != newVector.end(); ++i) {
       cout << *i << ' ';
     }
