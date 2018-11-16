@@ -58,6 +58,26 @@ vector<int> insertionSort(vector<int> v) { // Wikipedia::Insetion Sort
 }
 
 vector<int> selectionSort(vector<int> v) {
+  // Worst case ~ O(n^2) comparisons, O(n) swaps
+  // Best case ~ O(n^2) comparisons, O(n) swaps
+  for (int j = 0; j < v.size()-1; j++) {
+    int imin = j;
+    for (int i = j+1; i < v.size(); i++) {
+      // check and see if a smaller value exists
+      if (v.at(i) < v.at(imin)) {
+        // New min found
+        imin = i;
+      }
+    }
+
+    if (imin != j) {
+      // swap
+      int temp = v.at(j);
+      v.at(j) = v.at(imin);
+      v.at(imin) = temp;
+    }
+  }
+
   return v;
 }
 
@@ -83,7 +103,7 @@ int main() {
 
   // Sort the vector
   cout << "Sorting... ";
-  newVector = insertionSort(newVector);
+  newVector = selectionSort(newVector);
   cout << "Done!" << endl;
 
   // Print the vector
