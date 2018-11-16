@@ -13,6 +13,8 @@
 
 using namespace std;
 
+vector<int> merge(vector<int> left, vector<int> right);
+
 /* ---Methods--- */
 vector<int> fillRandom(int n, int min, int max, int seed) {
   srand(seed);
@@ -82,11 +84,75 @@ vector<int> selectionSort(vector<int> v) {
 }
 
 vector<int> mergeSort(vector<int> v) {
-  return v;
+  // Recursive Top-down
+  // Worst case O(n log n)
+  // Best case O(n log n)
+
+  // Base case
+  if (v.size() <= 1) {
+    return v;
+  }
+
+  // Divide the list into two different sublists
+  vector<int> left;
+  vector<int> right;
+
+  for (int i = 0; i < v.size(); i++) {
+    // Place first half in left; remainder in right
+    if (i < (v.size()/2)) {
+      left.push_back(v.at(i));
+    } else {
+      right.push_back(v.at(i));
+    }
+  }
+
+  // Recursively sort both sublists
+  left = mergeSort(left);
+  right = mergeSort(right);
+
+  // Merge the now sorted sublists
+  return merge(left, right);
+}
+
+vector<int> merge(vector<int> left, vector<int> right) {
+  vector<int> result;
+
+  // Merge the two lists till one is empty
+  while (left.size() != 0 && right.size() != 0) {
+      if (left.front() <= right.front()) {
+        result.push_back(left.front());
+        left.erase(left.begin());
+      } else {
+        result.push_back(right.front());
+        right.erase(right.begin());
+      }
+  }
+
+  // Consume the remaining list
+  while (left.size() != 0) {
+    result.push_back(left.front());
+    left.erase(left.begin());
+  }
+  while (right.size() != 0) {
+    result.push_back(right.front());
+    right.erase(right.begin());
+  }
+
+  return result;
 }
 
 vector<int> quickSort(vector<int> v) {
   return v;
+}
+
+// Return whether a vector is sorted lowest to highest
+bool isSorted(vector<int> v) {
+  for (int i = 0; i < v.size()-1; i++) {
+    if (v.at(i) > v.at(i+1)) {
+      return false;
+    }
+  }
+  return true;
 }
 
 int main() {
@@ -103,8 +169,9 @@ int main() {
 
   // Sort the vector
   cout << "Sorting... ";
-  newVector = selectionSort(newVector);
+  newVector = mergeSort(newVector);
   cout << "Done!" << endl;
+  cout << "isSorted: " << isSorted(newVector) << endl;
 
   // Print the vector
   if (n <= 10) {
