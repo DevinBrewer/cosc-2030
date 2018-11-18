@@ -10,6 +10,7 @@
 #include "winTimer.h"
 #include <iostream>
 #include <cstdlib>
+#include <algorithm>
 
 using namespace std;
 
@@ -25,7 +26,7 @@ vector<int> fillRandom(int n, int min, int max, int seed) {
   return v;
 }
 
-vector<int> bubbleSort(vector<int> v) { // Wikipedia::Opimimzing bubble sort
+vector<int> bubbleSort(vector<int> v) {
   // Worst case ~ O(n^2) comparisons, swaps
   // BEst case ~ O(n) comparisions, O(1) swaps
   for (int n = v.size(); n > 0; n--) {
@@ -42,7 +43,7 @@ vector<int> bubbleSort(vector<int> v) { // Wikipedia::Opimimzing bubble sort
   return v;
 }
 
-vector<int> insertionSort(vector<int> v) { // Wikipedia::Insetion Sort
+vector<int> insertionSort(vector<int> v) {
   // Worst case ~ O(n^2) comparisions, swaps
   // Best case ~ O(n) comparisions, O(1) swaps
   for (int i = 1; i < v.size(); i++) {
@@ -139,39 +140,37 @@ vector<int> merge(vector<int> left, vector<int> right) {
   return result;
 }
 
-void quickSort(vector<int> &v, int lo, int hi) {
+void quickSort(int arr[], int lo, int hi) {
   // Lomuto partition scheme
   // Worst case O(n^2)
   // Best case O(n log n)
+
   if (lo < hi) {
-    int p = partition(v, lo, hi);
-    quickSort(v, lo, p-1);
-    quickSort(v, p+1, hi);
+    int pi = partition(arr, lo, hi);
+    quickSort(arr, lo, pi-1);
+    quickSort(arr, pi+1, hi);
   }
 }
 
-int partition(vector<int> &v, int lo, int hi) {
-  int left = lo;
-  int right = hi;
-  int piv = v.at(left);
+int partition(int arr[], int lo, int hi) {
+  int pivot = arr[hi];
+  int i = lo - 1;
 
-  while (left < right) {
-    while (v.at(left) <= piv) left++;
-    while (v.at(right) > piv) right--;
-
-    if (left < right) {
-      swap(v, left, right);
+  for (int j = lo; j <= hi-1; j++) {
+    if (arr[j] <= pivot) {
+      i++;
+      swap(&arr[i], &arr[j]);
     }
   }
 
-  swap(v, lo, right);
-  return right;
+  swap(&arr[i + 1], &arr[hi]);
+  return (i+1);
 }
 
-void swap(vector<int> &v, int i, int j) {
-  int t = v.at(i);
-  v.at(i) = v.at(j);
-  v.at(j) = t;
+void swap(int* i, int* j) {
+  int t = *i;
+  *i = *j;
+  *j = t;
 }
 
 // Return whether a vector is sorted lowest to highest
@@ -185,35 +184,78 @@ bool isSorted(vector<int> v) {
 }
 
 int main() {
-  // Test the sorting algorithm
-  cout << "Enter the size: ";
-  int n = 0;
-  cin >> n;
-
   cout << "Enter a seed: ";
   int seed = 0;
   cin >> seed;
 
-  vector<int> newVector = fillRandom(n, 0, n, seed);
+  /*  ----Bubble Sort----  */
+  // vector<int> bubbleV = fillRandom(10100, 1, 500, seed);   // ~4 Sec
+  // vector<int> bubbleV = fillRandom(20200, 1, 500, seed);   // ~15 Sec
+  // vector<int> bubbleV = fillRandom(40400, 1, 500, seed);   // ~63 Sec
 
-  if (n <= 10) {
-    cout << "Before: ";
-    for (vector<int>::const_iterator i = newVector.begin(); i != newVector.end(); ++i) {
-      cout << *i << ' ';
-    }
-  }
+  // Timer time;
+  // time.start();
+  // bubbleV = bubbleSort(bubbleV);
+  // time.stop();
+  // cout << "Sorted in: " << time() << endl;
 
-  // Sort the vector
-  cout << "Sorting... ";
-  quickSort(newVector, 0, newVector.size()-1);
-  cout << "Done!" << endl;
-  cout << "isSorted: " << isSorted(newVector) << endl;
+  /*  ----Insertion Sort----  */
+  // vector<int> insertionV = fillRandom(12000, 1, 500, seed);  // ~4 Sec
+  // vector<int> insertionV = fillRandom(24000, 1, 500, seed);  // ~16 Sec
+  // vector<int> insertionV = fillRandom(48000, 1, 500, seed);  // ~65 Sec
 
-  // Print the vector
-  if (n <= 10) {
-    cout << "After: ";
-    for (vector<int>::const_iterator i = newVector.begin(); i != newVector.end(); ++i) {
-      cout << *i << ' ';
-    }
-  }
+  // Timer time;
+  // time.start();
+  // insertionV = insertionSort(insertionV);
+  // time.stop();
+  // cout << "Sorted in: " << time() << endl;
+
+  /*  ----Selection Sort----  */
+  // vector<int> selectionV = fillRandom(13000, 1, 500, seed);  // ~4 Sec
+  // vector<int> selectionV = fillRandom(26000, 1, 500, seed);  // ~16 Sec
+  // vector<int> selectionV = fillRandom(52000, 1, 500, seed);  // ~66 Sec
+
+  // Timer time;
+  // time.start();
+  // selectionV = selectionSort(selectionV);
+  // time.stop();
+  // cout << "Sorted in: " << time() << endl;
+
+  /*  ----Merge Sort----  */
+  // vector<int> mergeV = fillRandom(250000, 1, 500, seed);   // ~4 Sec
+  // vector<int> mergeV = fillRandom(500000, 1, 500, seed);   // ~13 Sec
+  // vector<int> mergeV = fillRandom(1000000, 1, 500, seed);  // ~47 Sec
+
+  // Timer time;
+  // time.start();
+  // mergeV = mergeSort(mergeV);
+  // time.stop();
+  // cout << "Sorted in: " << time() << endl;
+
+  /*  ----Quick Sort---- */
+  // vector<int> quickV = fillRandom(1000000, 1, 500, seed);   // ~4 Sec
+  // vector<int> quickV = fillRandom(2000000, 1, 500, seed);   // ~15 Sec
+  // vector<int> quickV = fillRandom(4000000, 1, 500, seed);   // ~62 Sec
+
+  // Convert the vector to an array to use the quickSort() algorithm
+  // int* arr = quickV.data();
+  // int n = quickV.size();
+
+  // Timer time;
+  // time.start();
+  // quickSort(arr, 0, n-1);
+  // time.stop();
+  // cout << "Sorted in: " << time() << endl;
+
+
+  /*  ----STL::Sort----  */
+  // vector<int> stlV = fillRandom(40000000, 1, 500, seed);   // ~4 Sec
+  // vector<int> stlV = fillRandom(80000000, 1, 500, seed);   // ~8 Sec
+  // vector<int> stlV = fillRandom(160000000, 1, 500, seed);  // ~16 Sec
+
+  // Timer time;
+  // time.start();
+  // sort(stlV.begin(), stlV.end());
+  // time.stop();
+  // cout << "Sorted in: " << time() << endl;
 }
