@@ -1,8 +1,8 @@
 #ifndef NODE_H
 #define NODE_H
 
-#include <string>
 #include <vector>
+#include "hash.h"
 
 class Node {
 public:
@@ -21,7 +21,7 @@ private:
   // Inaccessable variables
   string ID_;
   string parentID_;
-  srting rawEvent_;
+  string rawEvent_;
   string RHASH_;
   string LHASH_;
   vector<string> RHISTH_;
