@@ -28,10 +28,4 @@ private:
   vector<string> LHISTH_;
 }
 
-
-
-
-
-
-
 #endif
