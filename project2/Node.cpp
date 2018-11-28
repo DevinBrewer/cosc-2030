@@ -4,6 +4,12 @@
 Node::Node(string parentID) {
   // Set the parentID
   parentID_ = parentID;
+
+  // Initialize all other values to NULL
+  ID_ = NULL;
+  rawEvent_ = NULL;
+  RHASH_ = NULL;
+  LHASH_ = NULL;
 }
 
 void Node::updateRightHash(string RHASH) {
