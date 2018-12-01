@@ -384,7 +384,24 @@ long
 long
    BinaryTree:: height( const BinaryNode * subtree )
 {
-   return  -2;
+   long le = 0;
+   long ri = 0;
+
+   // Check the left subtree and compare the size to the right subtree
+   if (subtree->left_ != NULL) {
+     le = height(subtree->left_);
+   }
+
+   if (subtree->right_ != NULL) {
+     ri = height(subtree->right_);
+   }
+
+   if (le > ri) {
+     return le + 1;
+   } else {
+     return ri + 1;
+   }
+
 }
 
 
