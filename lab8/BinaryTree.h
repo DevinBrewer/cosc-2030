@@ -408,7 +408,18 @@ long
 long
    BinaryTree:: leaves( const BinaryNode * subtree )
 {
-   return  -3;
+   if (subtree->left_ == NULL && subtree->right_ == NULL) {
+     return 1;
+   }
+
+   long l = 0;
+   if (subtree->left_ != NULL) {
+     l += leaves(subtree->left_);
+   }
+   if (subtree->right_ != NULL) {
+     l += leaves(subtree->right_);
+   }
+   return l;
 }
 
 
