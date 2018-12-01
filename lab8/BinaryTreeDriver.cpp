@@ -29,17 +29,13 @@
 using namespace std;
 
 
-void 
-   getRequest( string & request )
-{
+void getRequest( string & request ) {
    cout << "Enter request: ";
    cin >> request;
 }
 
 
-int
-   main()
-{
+int main() {
    randomizeSeed();
 
    BinaryTree theTree;
@@ -47,54 +43,44 @@ int
    string request;
    getRequest( request );
 
-   while( request != "quit" )
-   {
-      if( request == "build" )
-      {
+   while( request != "quit" ) {
+      if( request == "build" ){
          long treeSize;
          cin >> treeSize;
          theTree.build( treeSize );
       }
 
-      else if( request == "display" )
-      {
+      else if( request == "display" ) {
          theTree.display( cout );
       }
 
-      else if( request == "size" )
-      {
+      else if( request == "size" ) {
          cout << "size is " << theTree.size() << endl;
       }
 
-      else if( request == "height" )
-      {
+      else if( request == "height" ) {
          cout << "height is " << theTree.height() << endl;
       }
 
-      else if( request == "leaves" )
-      {
+      else if( request == "leaves" ) {
          cout << "leaves is " << theTree.leaves() << endl;
       }
 
-      else if( request == "leftmost" )
-      {
+      else if( request == "leftmost" ) {
          cout << "leftmost is " << theTree.leftmost() << endl;
       }
 
-      else if( request == "preorder" )
-      {
+      else if( request == "preorder" ) {
          vector< short > traversal = theTree.preorder();
          cout << "preorder is ";
-         for( unsigned long i=0; i<traversal.size(); ++i )
-         {
+         for( unsigned long i=0; i<traversal.size(); ++i ) {
             cout << traversal.at(i) << "  ";
          }
          cout << endl;
       }
 
-      else
-      {
-         cout << "Known requests: build <size>, display, size, " 
+      else {
+         cout << "Known requests: build <size>, display, size, "
             << "height, leaves," << endl;
          cout << "                leftmost, preorder, quit" << endl;
       }
