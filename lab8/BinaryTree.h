@@ -369,7 +369,7 @@ void
 long
    BinaryTree:: size( const BinaryNode * subtree )
 {
-  long s = 0;
+  long s = 1;
   if (subtree->left_ != NULL) {
     s += size(subtree->left_);
   }
