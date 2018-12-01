@@ -20,7 +20,6 @@ private:
   Node TrackingTree_[];
   int layerCount_;
   int index_;
-
 }
 
 #endif
