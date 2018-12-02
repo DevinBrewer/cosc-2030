@@ -426,7 +426,11 @@ long
 short
    BinaryTree:: leftmost( const BinaryNode * subtree )
 {
-   return -4;
+   if (subtree->left_ != NULL) {
+     return leftmost(subtree->left_);
+   }
+
+   return subtree->entry_;
 }
 
 
