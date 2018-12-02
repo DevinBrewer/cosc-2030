@@ -79,6 +79,15 @@ int main() {
          cout << endl;
       }
 
+      else if (request == "postorder") {
+        vector<short> traversal = theTree.postorder();
+        cout << "postorder is ";
+        for (unsigned long i = 0; i < traversal.size(); ++i) {
+          cout << traversal.at(i) << " ";
+        }
+        cout << endl;
+      }
+
       else {
          cout << "Known requests: build <size>, display, size, "
             << "height, leaves," << endl;
