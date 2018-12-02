@@ -1,4 +1,5 @@
 #include "Node.h"
+#include <iostream>
 
 // Constructor
 Node::Node(std::string parentID) {
@@ -30,9 +31,15 @@ void Node::setEvent(std::string rawEvent) {
   setID(hash(rawEvent_ + parentID_));
 }
 
-// ostream& operator << (ostream& os) {
-//   return os << "This is a test: " << ID_ << endl;
-// }
+void Node::printData() {
+  std::cout << "ID: " << ID_ << "\n";
+  std::cout << "Parent: " << parentID_ << "\n";
+  std::cout << "RawE: " << rawEvent_ << "\n";
+  std::cout << "LHASH: " << LHASH_ << "\n";
+  std::cout << "RHASH: " << RHASH_ << "\n";
+  std::cout << "LHIST: " << LHISTH_.back() << "\n";
+  std::cout << "RHIST: " << RHISTH_.back() << "\n";
+}
 
 void Node::setID(std::string ID) {
   ID_ = ID;

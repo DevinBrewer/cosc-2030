@@ -13,7 +13,7 @@ public:
   void updateRightHash(std::string RHASH);
   void updateLeftHash(std::string LHASH);
   void setEvent(std::string rawEvent);
-  // ostream& operator << (ostream& os);
+  void printData();
 
 private:
   // Inaccessable functions
