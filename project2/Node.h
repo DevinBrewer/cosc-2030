@@ -7,25 +7,26 @@
 class Node {
 public:
   // Constructors
-  Node(string parentID); // Upon construction a node will receive only a parentID
+  Node(std::string parentID); // Upon construction a node will receive only a parentID
 
   // Accessable functions
-  void updateRightHash(string RHASH);
-  void updateLeftHash(string LHASH);
-  void setEvent(string rawEvent);
+  void updateRightHash(std::string RHASH);
+  void updateLeftHash(std::string LHASH);
+  void setEvent(std::string rawEvent);
+  // ostream& operator << (ostream& os);
 
 private:
   // Inaccessable functions
-  void setID(string ID);
+  void setID(std::string ID);
 
   // Inaccessable variables
-  string ID_;
-  string parentID_;
-  string rawEvent_;
-  string RHASH_;
-  string LHASH_;
-  vector<string> RHISTH_;
-  vector<string> LHISTH_;
-}
+  std::string ID_;
+  std::string parentID_;
+  std::string rawEvent_;
+  std::string RHASH_;
+  std::string LHASH_;
+  std::vector<std::string> RHISTH_;
+  std::vector<std::string> LHISTH_;
+};
 
 #endif

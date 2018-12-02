@@ -10,16 +10,16 @@ public:
 
   // Accessable functions
   void newLayer();
-  void updateNode(string ID, string rawEvent);
+  void updateNode(std::string ID, std::string rawEvent);
 
 private:
   // Inaccessable functions
   void updateParent();
 
   // Inaccessable variables
-  Node TrackingTree_[];
+  std::vector<Node> TrackingTree_;
   int layerCount_;
   int index_;
-}
+};
 
 #endif

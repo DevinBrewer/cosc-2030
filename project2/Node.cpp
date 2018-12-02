@@ -1,28 +1,28 @@
 #include "Node.h"
 
 // Constructor
-Node::Node(string parentID) {
+Node::Node(std::string parentID) {
   // Set the parentID
   parentID_ = parentID;
 
   // Initialize all other values to NULL
-  ID_ = NULL;
-  rawEvent_ = NULL;
-  RHASH_ = NULL;
-  LHASH_ = NULL;
+  ID_ = "";
+  rawEvent_ = "";
+  RHASH_ = "";
+  LHASH_ = "";
 }
 
-void Node::updateRightHash(string RHASH) {
+void Node::updateRightHash(std::string RHASH) {
   RHASH_ = RHASH;
   RHISTH_.push_back(RHASH_);
 }
 
-void Node::updateLeftHash(string LHASH) {
+void Node::updateLeftHash(std::string LHASH) {
   LHASH_ = LHASH;
   LHISTH_.push_back(LHASH_);
 }
 
-void Node::setEvent(string rawEvent) {
+void Node::setEvent(std::string rawEvent) {
   // Set the event
   rawEvent_ = rawEvent;
 
@@ -30,6 +30,10 @@ void Node::setEvent(string rawEvent) {
   setID(hash(rawEvent_ + parentID_));
 }
 
-void Node::setID(string ID) {
+// ostream& operator << (ostream& os) {
+//   return os << "This is a test: " << ID_ << endl;
+// }
+
+void Node::setID(std::string ID) {
   ID_ = ID;
 }

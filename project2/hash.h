@@ -3,6 +3,6 @@
 
 #include <string>
 
-string hash(string unhashedString);
+std::string hash(std::string unhashedString);
 
 #endif
