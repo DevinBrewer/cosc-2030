@@ -19,6 +19,9 @@
 // tom bailey   0930  4 apr 2011
 // tom bailey   0740  25 feb 2013
 
+// Implemented extra functions
+// Devin Brewer 2030 1 Dec 2018
+
 
 #include "BinaryTree.h"
 

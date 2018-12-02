@@ -9,6 +9,8 @@
 // tom bailey   0820  18 oct 2010
 // tom bailey   0850  4 apr 2011
 
+// Implemented extra functions
+// Devin Brewer 2030 1 Dec 2018
 
 #ifndef _BIN_TREE_H_
 #define _BIN_TREE_H_
@@ -464,7 +466,7 @@ void BinaryTree::postorder(std::vector<short> & traversal, const BinaryNode * su
   if (subtree->right_ != NULL) {
     postorder(traversal, subtree->right_);
   }
-  
+
   traversal.push_back(subtree->entry_);
 
 }
