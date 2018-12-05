@@ -11,6 +11,7 @@ public:
   // Accessable functions
   void newLayer();
   void updateNode(std::string ID, std::string rawEvent);
+  void viewTree();
 
 private:
   // Inaccessable functions

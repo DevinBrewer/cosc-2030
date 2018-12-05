@@ -28,7 +28,7 @@ void Node::setEvent(std::string rawEvent) {
   rawEvent_ = rawEvent;
 
   // Update the ID of the node
-  setID(hash(rawEvent_ + parentID_));
+  setID(::hash(rawEvent_ + parentID_));
 }
 
 void Node::printData() {
@@ -37,8 +37,8 @@ void Node::printData() {
   std::cout << "RawE: " << rawEvent_ << "\n";
   std::cout << "LHASH: " << LHASH_ << "\n";
   std::cout << "RHASH: " << RHASH_ << "\n";
-  std::cout << "LHIST: " << LHISTH_.back() << "\n";
-  std::cout << "RHIST: " << RHISTH_.back() << "\n";
+  if (!LHISTH_.empty()) { std::cout << "LHIST: " << LHISTH_.back() << "\n"; }
+  if (!RHISTH_.empty()) { std::cout << "RHIST: " << RHISTH_.back() << "\n"; }
 }
 
 void Node::setID(std::string ID) {
