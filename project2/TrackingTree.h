@@ -6,7 +6,7 @@
 class TrackingTree {
 public:
   // Constructors
-  TrackingTree();
+  TrackingTree(std::string rootNodeID);
 
   // Accessable functions
   void newLayer();

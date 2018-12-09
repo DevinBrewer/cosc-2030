@@ -13,10 +13,24 @@ char getRandomChar() {
   return alphanum[rand() % (sizeof(alphanum)-1)];
 }
 
+string getRandomString(int size) {
+  string randString;
+  for (int i = 0; i < size; i++) {
+    randString += getRandomChar();
+  }
+  return randString;
+}
+
 int main() {
 
+  // Initialize the random seed
+  cout << "Enter a seed: ";
+  int seed;
+  cin >> seed;
+  srand(seed);
+
   // Create a single node to test its functionality
-  Node snode = Node("acb123");
+  Node snode = Node(getRandomString(8));
 
   snode.printData();
 
