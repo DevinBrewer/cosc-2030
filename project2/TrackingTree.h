@@ -6,7 +6,7 @@
 class TrackingTree {
 public:
   // Constructors
-  TrackingTree(std::string rootNodeID);
+  TrackingTree();
 
   // Accessable functions
   void newLayer();
@@ -16,11 +16,14 @@ public:
 private:
   // Inaccessable functions
   void updateParent();
+  char getRandomChar();
+  std::string getRandomString(int size);
 
   // Inaccessable variables
   std::vector<Node> TrackingTree_;
   int layerCount_;
   int index_;
+  int totNodes_;
 };
 
 #endif

@@ -2,13 +2,12 @@
 #include <iostream>
 
 // Constructor
-Node::Node(std::string parentID) {
+Node::Node(std::string parentID, std::string rawEvent) {
   // Set the parentID
   parentID_ = parentID;
+  setEvent(rawEvent);
 
   // Initialize all other values to NULL
-  ID_ = "";
-  rawEvent_ = "";
   RHASH_ = "";
   LHASH_ = "";
 }
@@ -39,6 +38,10 @@ void Node::printData() {
   std::cout << "RHASH: " << RHASH_ << "\n";
   if (!LHISTH_.empty()) { std::cout << "LHIST: " << LHISTH_.back() << "\n"; }
   if (!RHISTH_.empty()) { std::cout << "RHIST: " << RHISTH_.back() << "\n"; }
+}
+
+std::string Node::getID() {
+  return ID_;
 }
 
 void Node::setID(std::string ID) {

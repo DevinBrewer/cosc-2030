@@ -7,13 +7,14 @@
 class Node {
 public:
   // Constructors
-  Node(std::string parentID); // Upon construction a node will receive only a parentID
+  Node(std::string parentID, std::string rawEvent); // Upon construction a node will receive only a parentID
 
   // Accessable functions
   void updateRightHash(std::string RHASH);
   void updateLeftHash(std::string LHASH);
   void setEvent(std::string rawEvent);
   void printData();
+  std::string getID();
 
 private:
   // Inaccessable functions

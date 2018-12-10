@@ -4,22 +4,7 @@
 #include <ctime>
 using namespace std;
 
-// RANDOM STRING GENERATOR
-static const char alphanum[] =
-"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-"abcdefghijklmnopqrstuvwxyz";
 
-char getRandomChar() {
-  return alphanum[rand() % (sizeof(alphanum)-1)];
-}
-
-string getRandomString(int size) {
-  string randString;
-  for (int i = 0; i < size; i++) {
-    randString += getRandomChar();
-  }
-  return randString;
-}
 
 int main() {
 
@@ -29,16 +14,31 @@ int main() {
   cin >> seed;
   srand(seed);
 
-  // Create a single node to test its functionality
-  Node snode = Node(getRandomString(8));
+  // // Create a single node to test its functionality
+  // Node snode = Node(getRandomString(8));
+  //
+  // snode.printData();
+  //
+  // snode.setEvent("This is a system test.");
+  //
+  // cout << "test" << endl;
+  //
+  // snode.printData();
 
-  snode.printData();
+  // Create a tracking tree to test its functionality
+  TrackingTree tree = TrackingTree();
 
-  snode.setEvent("This is a system test.");
+  tree.viewTree();
 
-  cout << "test" << endl;
+  cout << "Constructing layer...\n";
+  tree.newLayer();
 
-  snode.printData();
+  tree.viewTree();
+
+  cout << "Constructing layer...\n";
+  tree.newLayer();
+
+  tree.viewTree();
 
   return 0;
 }
