@@ -44,6 +44,10 @@ std::string Node::getID() {
   return ID_;
 }
 
+std::string Node::getData() {
+  return ID_ + parentID_ + rawEvent_ + RHASH_ + LHASH_;
+}
+
 void Node::setID(std::string ID) {
   ID_ = ID;
 }

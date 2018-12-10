@@ -15,14 +15,12 @@ public:
 
 private:
   // Inaccessable functions
-  void updateParent();
+  void updateParent(int ind);
   char getRandomChar();
   std::string getRandomString(int size);
 
   // Inaccessable variables
   std::vector<Node> TrackingTree_;
-  int layerCount_;
-  int index_;
   int totNodes_;
 };
 

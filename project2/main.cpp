@@ -40,5 +40,10 @@ int main() {
 
   tree.viewTree();
 
+  cout << "Constructing layer...\n";
+  tree.newLayer();
+
+  tree.viewTree();
+
   return 0;
 }

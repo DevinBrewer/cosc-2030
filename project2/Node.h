@@ -15,6 +15,7 @@ public:
   void setEvent(std::string rawEvent);
   void printData();
   std::string getID();
+  std::string getData();
 
 private:
   // Inaccessable functions
